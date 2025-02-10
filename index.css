@@ -490,7 +490,7 @@ footer ul.social-links a:hover {
     transform: scale(1.1);
 }
 
-/* Responsividade */
+/* Responsividade para a seção de produtos */
 @media (max-width: 768px) {
     .products {
         flex-direction: column;
@@ -502,19 +502,118 @@ footer ul.social-links a:hover {
         width: 90%;
         max-width: 300px;
     }
+
+    /* Cabeçalho: Ajustar para visualização mobile */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        /* Exemplo de ajuste na logo */
+    }
+
+    .nav {
+        display: none; /* Escondendo a navegação padrão */
+    }
+
+    .menu-toggle {
+        display: block; /* Botão de menu que aparece no mobile */
+        cursor: pointer;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.open-sidebar {
+        left: 0;
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 20px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .sidebar li {
+        margin: 15px 0;
+    }
+
+    .cart-icon {
+        font-size: 2rem;
+        cursor: pointer;
+    }
 }
 
+/* Responsividade para telas menores (480px ou menor) */
 @media (max-width: 480px) {
     .product {
         width: 100%;
     }
 
     .sidebar {
-        width: 100%;
         left: -100%;
     }
 
     .sidebar.open-sidebar {
         left: 0;
     }
+
+    /* Cabeçalho: Estilo do botão de menu */
+    .menu-toggle {
+        display: block;
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 5px;
+    }
+
+    /* Ajustes do carrinho */
+    .cart {
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .cart-items {
+        font-size: 1rem;
+        color: #fff;
+        margin-left: 10px;
+    }
+
+    .cart-items span {
+        background-color: red;
+        border-radius: 50%;
+        padding: 0 6px;
+    }
+
+    .cart-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #f2a900;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+
+/* Visibilidade do carrinho de compras */
+.cart-button.open {
+    background-color: #ff8c00;
 }
