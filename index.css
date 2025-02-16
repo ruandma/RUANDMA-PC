@@ -6,7 +6,7 @@
     font-size: 100%; /* Garante consistência no tamanho da fonte */
 }
 
-/* Variáveis para as cores */
+/* Variáveis para as cores e tamanhos */
 :root {
     --primary-color: #00ff99;
     --secondary-color: #ff5555;
@@ -31,6 +31,11 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+/* Classe para ocultar elementos */
+.hidden {
+    display: none;
 }
 
 /* Header */
@@ -76,25 +81,30 @@ nav .logo img {
     padding: 2px 5px;
     border-radius: 50%;
 }
+
 .nav-links {
     display: flex;
     gap: var(--spacing-medium);
     justify-content: center;
     flex-grow: 1;
 }
+
 .nav-links li {
     list-style: none;
 }
+
 .nav-links a {
     color: var(--white);
     text-decoration: none;
     padding: 8px 12px;
     transition: color 0.3s ease;
 }
+
 .nav-links a:hover,
 .nav-links a:focus {
     color: var(--primary-color);
 }
+
 .nav-links a.active {
     color: var(--secondary-color);
     font-weight: bold;
@@ -104,6 +114,7 @@ nav .logo img {
 .profile {
     margin-left: auto;
 }
+
 .profile-img {
     width: 40px;
     height: 40px;
@@ -119,6 +130,7 @@ nav .logo img {
     gap: var(--spacing-large);
     padding: var(--spacing-large);
 }
+
 .product {
     background: var(--background-color);
     padding: var(--spacing-medium);
@@ -130,6 +142,7 @@ nav .logo img {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 255, 153, 0.2);
 }
+
 .product img {
     width: 250px;
     height: 300px;
@@ -137,13 +150,16 @@ nav .logo img {
     transition: transform 0.3s;
     object-fit: cover;
 }
+
 .product:hover {
     transform: scale(1.05);
     background-color: var(--background-light);
 }
+
 .product:hover img {
     transform: scale(1.1);
 }
+
 .product h3 {
     margin-top: var(--spacing-medium);
     font-size: var(--font-medium);
@@ -170,7 +186,6 @@ nav .logo img {
     transition: transform 0.3s ease;
 }
 
-/* Quando a configuração estiver aberta, a seta vira para cima */
 .config-btn.open .arrow {
     transform: rotate(180deg);
 }
@@ -188,19 +203,81 @@ nav .logo img {
 .config-description {
     max-height: 0;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     opacity: 0;
     transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
 }
 
-/* Quando a configuração estiver aberta */
 .config-description.open {
-    max-height: 500px; /* Ajuste conforme o necessário */
+    max-height: 500px; /* Ajuste conforme necessário */
     opacity: 1;
     padding-top: var(--spacing-small);
 }
 
 /* Botões de ação */
+.product-actions {
+    display: flex;
+    flex-direction: column; /* Deixa os botões lado a lado */
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    align-items: center; /* Alinha os botões verticalmente */
+    gap: 10px; /* Espaçamento entre os botões */
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.product-actions button {
+    flex: 1; /* Faz com que os botões tenham o mesmo tamanho */
+    max-width: 220px; /* Define um tamanho máximo */
+    text-align: center;
+    font-size: 1rem;
+    padding: 10px;
+    white-space: nowrap; /* Impede que o texto quebre a linha */
+}
+
+
+.config-description.open .product-actions {
+    display: flex; /* Exibe os botões como flex container */
+    flex-direction: column; /* Alinha os botões verticalmente */
+    gap: var(--spacing-small);
+    margin-top: var(--spacing-medium);
+}
+
+/* 🔹 Ícone do carrinho animado */
+.cart-fly-icon {
+    position: absolute;
+    font-size: 18px;
+    color: #000 !important;
+    background-color: white !important;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Animação do carrinho voando */
+@keyframes fly-to-cart {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(0, 0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5) translate(var(--cart-x), var(--cart-y));
+    }
+}
+
+/* Estilização dos Botões de Ação */
 .add-to-cart,
 .buy-now,
 .clear-cart-btn,
@@ -213,65 +290,67 @@ nav .logo img {
     text-transform: uppercase;
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: none; /* Inicialmente ocultos */
 }
 
-/* Estilos para o botão quando desabilitado */
 button:disabled {
     background-color: var(--gray-dark);
     cursor: not-allowed;
 }
 
-/* Exibe os botões de ação quando a configuração estiver aberta */
-.product .config-description.open ~ .product-actions {
-    display: block; /* Torna os botões visíveis */
-}
-
-/* Botão Adicionar ao Carrinho */
 .add-to-cart {
+    width: 100% !important;
+    max-width: 220px !important;
     background: #8A2BE2;
     color: var(--white);
 }
+
 .add-to-cart:hover {
     background: #6A1B9A;
 }
 
-/* Botão Comprar Agora */
 .buy-now {
+    width: 100% !important;
+    max-width: 220px !important;
     background: #28a745;
     color: var(--white);
 }
+
 .buy-now:hover {
     background-color: #218838;
 }
 
-/* Botão Limpar Carrinho */
 .clear-cart-btn {
-    background-color: #FF5733;
-    color: white;
+    color: #ccc;
+    background-color: #FF5733 !important; /* Mantém a cor original */
     font-weight: bold;
-    border-radius: 8px;
+    width: 100%;
+    text-align: center;
 }
+
 .clear-cart-btn:hover {
     background-color: #FF2D00;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
 }
+
 .clear-cart-btn:active {
     transform: scale(0.98);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Botão de Checkout */
 .checkout-btn {
+    color: #ccc;
     background-color: #28a745 !important;
     font-weight: bold;
     width: 100%;
-    display: block;
     text-align: center;
 }
+
 .checkout-btn:hover {
     background-color: #218838;
+}
+
+.checkout-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Preços */
@@ -282,9 +361,11 @@ button:disabled {
     border-radius: 5px;
     background: var(--gray-dark);
 }
+
 .indisponivel {
     color: var(--secondary-color);
 }
+
 .verde {
     color: var(--primary-color);
 }
@@ -303,11 +384,11 @@ button:disabled {
     z-index: 1001;
     overflow-y: auto;
 }
-/* Quando a sidebar estiver aberta */
+
 .sidebar.open-sidebar {
     left: 0;
 }
-/* Overlay para escurecer o fundo */
+
 .overlay {
     position: fixed;
     top: 0;
@@ -320,44 +401,40 @@ button:disabled {
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
 }
-/* Quando o overlay estiver visível */
+
 .overlay.visible {
     opacity: 1;
     visibility: visible;
 }
-/* Cabeçalho da Sidebar */
+
 .sidebar-header {
     font-size: var(--font-medium);
     font-weight: bold;
     margin-bottom: var(--spacing-medium);
 }
 
-/* Botão de fechar */
 .close-btn {
     position: absolute;
     top: var(--spacing-small);
     right: var(--spacing-small);
-    background-color: transparent; /* Fundo transparente por padrão */
+    background-color: transparent;
     font-size: 20px;
     color: var(--white);
     cursor: pointer;
     transition: transform 0.2s, background-color 0.3s, border-radius 0.3s ease;
-    padding: 5px; /* Aumenta a área clicável */
-    border-radius: 50%; /* Deixa o botão redondo */
-    border: 2px solid transparent; /* Garante que não haja borda visível quando não está em hover */
+    padding: 5px;
+    border-radius: 50%;
+    border: 2px solid transparent;
 }
 
-/* Efeito hover */
 .close-btn:hover {
-    background-color: var(--secondary-color); /* Fundo vermelho quando passa o mouse */
+    background-color: var(--secondary-color);
     transform: scale(1.1);
 }
 
-/* Remove o outline quando estiver focado */
 .close-btn:focus {
     outline: none;
 }
-
 
 /* Itens do Carrinho */
 .cart-items {
@@ -392,7 +469,6 @@ button:disabled {
     font-weight: bold;
 }
 
-/* Rodapé do Carrinho */
 .cart-footer {
     margin-top: var(--spacing-medium);
     border-top: 1px solid var(--gray-light);
@@ -423,7 +499,6 @@ button:disabled {
 }
 
 /* Estilos para o Footer */
-/* Garante que a página ocupa toda a altura da tela */
 html, body {
     height: 100%;
     margin: 0;
@@ -431,12 +506,10 @@ html, body {
     flex-direction: column;
 }
 
-/* Faz o conteúdo principal crescer e empurrar o footer para baixo */
 main {
     flex: 1;
 }
 
-/* Estilos para o Footer */
 footer {
     background-color: var(--background-light);
     color: var(--white);
@@ -444,7 +517,7 @@ footer {
     text-align: center;
     font-size: var(--font-medium);
     width: 100%;
-    margin-top: auto; /* Garante que o footer sempre fica no final */
+    margin-top: auto;
 }
 
 footer .footer-content {
@@ -452,19 +525,16 @@ footer .footer-content {
     margin: 0 auto;
 }
 
-/* Remove os pontos das listas */
 footer ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Ajusta os itens da lista */
 footer ul li {
     margin-bottom: var(--spacing-small);
 }
 
-/* Links sociais */
 footer ul.social-links {
     display: flex;
     justify-content: center;
@@ -484,7 +554,6 @@ footer ul.social-links a {
     transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-/* Efeito ao passar o mouse */
 footer ul.social-links a:hover {
     color: var(--primary-color);
     transform: scale(1.1);
@@ -493,47 +562,95 @@ footer ul.social-links a:hover {
 /* Responsividade aprimorada */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
         padding: var(--spacing-medium);
     }
+
     .nav-links {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row;
+        align-items: center;
         gap: var(--spacing-small);
+        flex-wrap: nowrap; /* Garante que os links não quebrem a linha */
     }
+
+    .nav-links a {
+        padding: 6px 10px; /* Reduz o padding para economizar espaço */
+        font-size: var(--font-small); /* Ajusta o tamanho da fonte */
+    }
+
     .products {
         flex-direction: column;
         align-items: center;
         padding: var(--spacing-medium);
     }
+
     .product {
         width: 90%;
         margin-bottom: var(--spacing-medium);
     }
+
+    /* Botões de ação (inicialmente ocultos) */
+    .product-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;  /* Centraliza os botões horizontalmente */
+        justify-content: center;  /* Garante alinhamento vertical */
+        gap: 10px; /* Espaçamento entre os botões */
+        width: 100%;  /* Garante que ocupe a largura do container */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* Exibir os botões quando a descrição estiver aberta */
+    .config-description.open .product-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .product-actions button {
+        width: 100%;
+        max-width: 220px;
+        text-align: center;
+        font-size: 1rem;
+        padding: 10px;
+    }
+
     .sidebar {
         width: 100%;
         left: -100%;
     }
+
     .sidebar.open-sidebar {
         left: 0;
     }
+
     .cart-count {
         top: -2px;
         right: -5px;
     }
+
     .profile {
         margin-left: 0;
         margin-top: var(--spacing-small);
     }
+
     .profile-img {
         width: 30px;
         height: 30px;
     }
+
     footer {
         padding: var(--spacing-small);
         font-size: var(--font-small);
     }
+
     footer ul.social-links {
         flex-direction: column;
         gap: var(--spacing-small);
@@ -543,15 +660,19 @@ footer ul.social-links a:hover {
 /* Ajustes adicionais para telas muito pequenas */
 @media (max-width: 480px) {
     .nav-links a {
-        padding: 6px 10px;
+        padding: 4px 8px; /* Reduz ainda mais o padding para telas muito pequenas */
+        font-size: 0.7em; /* Ajusta o tamanho da fonte para caber melhor */
     }
+
     .product img {
         width: 100%;
         height: auto;
     }
+
     .product h3 {
         font-size: var(--font-small);
     }
+
     .add-to-cart,
     .buy-now,
     .clear-cart-btn,
@@ -559,6 +680,7 @@ footer ul.social-links a:hover {
         font-size: var(--font-small);
         padding: var(--spacing-small);
     }
+
     .checkout-btn {
         margin-top: var(--spacing-small);
     }
