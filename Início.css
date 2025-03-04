@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 /* Reset global */
 * {
     margin: 0;
@@ -15,9 +17,9 @@
     --white: #fff;
     --gray-dark: #444;
     --gray-light: #ccc;
-    --font-small: 0.8em;
-    --font-medium: 1em;
-    --font-large: 1.5em;
+    --font-small: 0.7em; /* Diminuído de 0.8em para 0.7em */
+    --font-medium: 0.9em; /* Diminuído de 1em para 0.9em */
+    --font-large: 1.3em; /* Diminuído de 1.5em para 1.3em */
     --spacing-small: 8px;
     --spacing-medium: 16px;
     --spacing-large: 24px;
@@ -31,11 +33,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-/* Classe para ocultar elementos */
-.hidden {
-    display: none;
 }
 
 /* Header */
@@ -70,6 +67,7 @@ nav .logo img {
     height: auto;
 }
 
+/* Contador do carrinho de compras */
 .cart-count {
     position: absolute;
     top: -5px;
@@ -78,8 +76,13 @@ nav .logo img {
     color: var(--white);
     font-size: var(--font-small);
     font-weight: bold;
-    padding: 2px 5px;
-    border-radius: 50%;
+    padding: 5px; /* Ajuste de padding para não deformar */
+    width: 20px; /* Mantém um tamanho fixo */
+    height: 20px; /* Igual à largura para ser redondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Garante que fique redondo */
 }
 
 .nav-links {
@@ -119,7 +122,7 @@ nav .logo img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 /* Produtos */
@@ -136,6 +139,7 @@ nav .logo img {
     padding: var(--spacing-medium);
     border-radius: 10px;
     width: 300px;
+    min-height: 425px; /* Ajusta a altura mínima */
     text-align: center;
     transition: transform 0.3s, background-color 0.3s;
     position: relative;
@@ -148,7 +152,7 @@ nav .logo img {
     height: 300px;
     border-radius: 10px;
     transition: transform 0.3s;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .product:hover {
@@ -212,6 +216,7 @@ nav .logo img {
     max-height: 500px; /* Ajuste conforme necessário */
     opacity: 1;
     padding-top: var(--spacing-small);
+    margin-bottom: var(--spacing-medium);
 }
 
 /* Botões de ação */
@@ -242,6 +247,9 @@ nav .logo img {
     flex-direction: column; /* Alinha os botões verticalmente */
     gap: var(--spacing-small);
     margin-top: var(--spacing-medium);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 /* 🔹 Ícone do carrinho animado */
@@ -320,7 +328,7 @@ button:disabled {
 }
 
 .clear-cart-btn {
-    color: #ccc;
+    color: var(--white);
     background-color: #FF5733 !important; /* Mantém a cor original */
     font-weight: bold;
     width: 100%;
@@ -337,7 +345,7 @@ button:disabled {
 }
 
 .checkout-btn {
-    color: #ccc;
+    color: var(--white);
     background-color: #28a745 !important;
     font-weight: bold;
     width: 100%;
@@ -355,6 +363,7 @@ button:disabled {
 
 /* Preços */
 .price {
+    margin-top: var(--spacing-medium);
     font-size: var(--font-medium);
     font-weight: bold;
     padding: var(--spacing-small);
@@ -377,8 +386,8 @@ button:disabled {
     top: 0;
     left: -300px;
     height: 100%;
-    background-color: var(--background-light);
-    color: white;
+    background: var(--background-light);
+    color: var(--white);
     padding: var(--spacing-medium);
     transition: left 0.3s ease-in-out;
     z-index: 1001;
@@ -389,46 +398,62 @@ button:disabled {
     left: 0;
 }
 
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        left: -100%;
+    }
+
+    .sidebar.open-sidebar {
+        left: 0;
+    }
+}
+
+/* Overlay para escurecer o fundo */
 .overlay {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 999;
 }
 
 .overlay.visible {
-    opacity: 1;
-    visibility: visible;
+    display: block;
 }
 
+/* Cabeçalho da Sidebar */
 .sidebar-header {
     font-size: var(--font-medium);
     font-weight: bold;
     margin-bottom: var(--spacing-medium);
+    text-align: center;
 }
 
+/* Botão de fechar */
 .close-btn {
     position: absolute;
     top: var(--spacing-small);
     right: var(--spacing-small);
-    background-color: transparent;
-    font-size: 20px;
+    background: transparent;
+    font-size: 16px;
     color: var(--white);
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.3s, border-radius 0.3s ease;
-    padding: 5px;
+    transition: transform 0.2s, background-color 0.3s;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
     border: 2px solid transparent;
 }
 
 .close-btn:hover {
-    background-color: var(--secondary-color);
+    background: var(--secondary-color);
     transform: scale(1.1);
 }
 
@@ -436,39 +461,63 @@ button:disabled {
     outline: none;
 }
 
-/* Itens do Carrinho */
-.cart-items {
-    margin-bottom: var(--spacing-medium);
-}
-
+/* Itens do carrinho */
 .cart-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    width: 100%;
-    margin-bottom: var(--spacing-small);
-    padding-bottom: var(--spacing-small);
-    border-bottom: 1px solid var(--gray-light);
+    padding: var(--spacing-small);
+    border-bottom: 1px solid var(--gray-dark);
 }
 
-.cart-item-img {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 4px;
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: fill;
+    border-radius: 5px;
+    margin-right: var(--spacing-small);
 }
 
-.item-details {
+.cart-item-details {
     flex-grow: 1;
     padding-left: var(--spacing-small);
 }
 
-.cart-item .item-price {
-    font-size: var(--font-medium);
+.cart-item-details p {
+    margin: 0;
+    font-size: var(--font-small);
     color: var(--white);
-    font-weight: bold;
 }
 
+.cart-item-price {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: var(--font-medium);
+    margin: 0;
+}
+
+/* Controles de quantidade */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-small);
+}
+
+.quantity-controls button {
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: var(--font-small);
+}
+
+.quantity-controls span {
+    font-size: var(--font-medium);
+    color: var(--white);
+}
+
+/* Rodapé do carrinho */
 .cart-footer {
     margin-top: var(--spacing-medium);
     border-top: 1px solid var(--gray-light);
@@ -479,26 +528,28 @@ button:disabled {
 .cart-footer .total-price {
     font-size: var(--font-medium);
     font-weight: bold;
+    color: var(--primary-color);
 }
 
 /* Botão de checkout */
 .checkout-btn {
-    background-color: var(--primary-color);
+    background: var(--primary-color);
     color: var(--white);
     border: none;
     padding: var(--spacing-small) var(--spacing-medium);
     cursor: pointer;
-    font-size: var(--font-small);
+    font-size: var(--font-medium);
     border-radius: 4px;
     width: 100%;
-    margin-top: var(--spacing-medium);
+    margin-top: var(--spacing-small);
+    transition: background-color 0.3s ease;
 }
 
 .checkout-btn:hover {
-    background-color: #218838;
+    background: #218838;
 }
 
-/* Estilos para o Footer */
+/* Footer */
 html, body {
     height: 100%;
     margin: 0;
@@ -511,7 +562,7 @@ main {
 }
 
 footer {
-    background-color: var(--background-light);
+    background: var(--background-light);
     color: var(--white);
     padding: var(--spacing-medium);
     text-align: center;
@@ -559,7 +610,7 @@ footer ul.social-links a:hover {
     transform: scale(1.1);
 }
 
-/* Responsividade aprimorada */
+/* Responsividade */
 @media (max-width: 768px) {
     nav {
         flex-direction: row;
@@ -571,12 +622,12 @@ footer ul.social-links a:hover {
         flex-direction: row;
         align-items: center;
         gap: var(--spacing-small);
-        flex-wrap: nowrap; /* Garante que os links não quebrem a linha */
+        flex-wrap: nowrap;
     }
 
     .nav-links a {
-        padding: 6px 10px; /* Reduz o padding para economizar espaço */
-        font-size: var(--font-small); /* Ajusta o tamanho da fonte */
+        padding: 6px 10px;
+        font-size: var(--font-small);
     }
 
     .products {
@@ -590,26 +641,20 @@ footer ul.social-links a:hover {
         margin-bottom: var(--spacing-medium);
     }
 
-    /* Botões de ação (inicialmente ocultos) */
     .product-actions {
         display: flex;
         flex-direction: column;
-        align-items: center;  /* Centraliza os botões horizontalmente */
-        justify-content: center;  /* Garante alinhamento vertical */
-        gap: 10px; /* Espaçamento entre os botões */
-        width: 100%;  /* Garante que ocupe a largura do container */
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
-    /* Exibir os botões quando a descrição estiver aberta */
     .config-description.open .product-actions {
         display: flex !important;
-        flex-direction: column !important;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
         opacity: 1 !important;
         visibility: visible !important;
     }
@@ -625,10 +670,6 @@ footer ul.social-links a:hover {
     .sidebar {
         width: 100%;
         left: -100%;
-    }
-
-    .sidebar.open-sidebar {
-        left: 0;
     }
 
     .cart-count {
@@ -657,11 +698,10 @@ footer ul.social-links a:hover {
     }
 }
 
-/* Ajustes adicionais para telas muito pequenas */
 @media (max-width: 480px) {
     .nav-links a {
-        padding: 4px 8px; /* Reduz ainda mais o padding para telas muito pequenas */
-        font-size: 0.7em; /* Ajusta o tamanho da fonte para caber melhor */
+        padding: 4px 8px;
+        font-size: 0.7em;
     }
 
     .product img {

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- SEO -->
+    <meta name="description" content="Entre em contato com a RUANDMA PC para saber mais sobre nossos produtos e serviços.">
+    <meta name="keywords" content="Contato, Suporte, RUANDMA PC, Atendimento ao cliente">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph (Redes sociais) -->
+    <meta property="og:title" content="Contato - RUANDMA PC">
+    <meta property="og:description" content="Entre em contato com a RUANDMA PC para tirar dúvidas ou saber mais sobre nossos produtos.">
+    <meta property="og:image" content="imagens/logomarca/logomarca.png">
+    <meta property="og:url" content="https://ruandmapc.com/contato">
+    <meta property="og:type" content="website">
+    
+    <!-- Ícones -->
+    <link rel="icon" href="imagens/logomarca/logomarca.png" type="image/png">
+    
+    <!-- Font Awesome (Ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="Início.css">
+    <link rel="stylesheet" href="Loja.css">
+    <link rel="stylesheet" href="Sobre-nós.css">
+    
+    <!-- CSS Específico da Página -->
+    <link rel="stylesheet" href="Contato.css">
+    
+    <title>Contato - RUANDMA PC</title>
+</head>
+<body>
+    <!-- Header -->
+    <header role="banner">
+        <nav role="navigation" aria-label="Menu principal">
+            <div class="logo" role="button" aria-label="Abrir carrinho" tabindex="0">
+                <img src="imagens/logomarca/logomarca.png" alt="RUANDMA PC">
+                <div class="cart-count" id="cart-count">0</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="Início.html" aria-label="Ir para a página inicial">Início</a></li>
+                <li><a href="Loja.html" aria-label="Visitar nossa loja">Loja</a></li>
+                <li><a href="Sobre-nós.html" aria-label="Saber mais sobre nós">Sobre nós</a></li>
+                <li><a href="Contato.html" aria-label="Entrar em contato conosco">Contato</a></li>
+            </ul>
+            <div class="profile">
+                <img src="imagens/perfil/perfil.png" alt="Foto de Perfil" class="profile-img" onerror="this.src='imagens/perfil/perfil.png'">
+            </div>
+            <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Seção de Contato -->
+    <section class="contato main-content">
+        <div class="container">
+            <h1>Entre em Contato</h1>
+            <p>Tem alguma dúvida ou sugestão?<br>
+                Preencha o formulário abaixo ou entre em contato com a gente pelos nossos canais de atendimento.</p>               
+            
+            <!-- Formulário de Contato -->
+            <form action="#" method="POST" id="form-contato">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required placeholder="Seu nome">
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required placeholder="Seu e-mail">
+
+                <label for="assunto">Assunto</label>
+                <input type="text" id="assunto" name="assunto" required placeholder="Assunto da mensagem">
+
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Sua mensagem"></textarea>
+
+                <button type="submit" class="btn">Enviar Mensagem</button>
+            </form>
+            
+            <!-- Informações de Contato -->
+            <div class="informacoes">
+                <h2>Outros Formas de Contato</h2>
+                <ul>
+                    <li><i class="fas fa-phone-alt"></i> <strong>Telefone:</strong> (61) 98664-1237</li>
+                    <li><i class="fas fa-envelope"></i> <strong>E-mail:</strong> <a href="mailto:contato@ruandmapc.com">contato@ruandmapc.com</a></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <strong>Endereço:</strong> Loja Física Indisponível</li>
+                </ul>
+                <h2>Redes Sociais</h2>
+                <ul>
+                    <li><a href="https://www.instagram.com/ruandma_pc" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sidebar (Carrinho) -->
+    <div class="sidebar" id="cart-sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+            <h3>Carrinho de Compras</h3>
+        </div>
+        <button id="close-btn" class="close-btn" aria-label="Fechar carrinho">x</button>
+        <button class="clear-cart-btn" id="clear-cart-btn" aria-label="Limpar todos os itens do carrinho">
+            Limpar Carrinho
+        </button>
+        <div id="cart-items" aria-live="polite"></div>
+        <div class="cart-total">
+            <p>Total: <span id="cart-total">R$ 0,00</span></p>
+        </div>
+        <button class="checkout-btn" aria-label="Finalizar compra">Finalizar Compra</button>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" aria-hidden="true"></div>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <ul>
+                <li>&copy; 2025 RUANDMA PC - Todos os direitos reservados.</li>
+                <li>CNPJ: 00.000.000/0001-00</li>
+                <li>Contato: <a href="mailto:contato@ruandmapc.com">contato@ruandmapc.com</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="shared.js" defer></script>
+    <script src="Início.js" defer></script>
+    <script src="Início.js" defer></script>
+    <script src="Loja.js" defer></script> <!-- Se necessário -->  
+</body>
+</html>

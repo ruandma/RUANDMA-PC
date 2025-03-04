@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- SEO -->
+    <meta name="description" content="RUANDMA PC - Os melhores computadores para gamers, editores e profissionais de tecnologia.">
+    <meta name="keywords" content="PC Gamer, Hardware, Tecnologia, Computadores, Setup Gamer, Workstation, PC para edição, Upgrade de PC">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph (Redes sociais) -->
+    <meta property="og:title" content="RUANDMA PC">
+    <meta property="og:description" content="Os melhores computadores para gamers e profissionais!">
+    <meta property="og:image" content="imagens/logomarca/logomarca.png">
+    <meta property="og:url" content="https://ruandmapc.com/sobre-nós">
+    <meta property="og:type" content="website">
+    
+    <!-- Ícones -->
+    <link rel="icon" href="imagens/logomarca/logomarca.png" type="image/png">
+    
+    <!-- Font Awesome (Ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="Início.css">
+    <link rel="stylesheet" href="Loja.css">
+    
+    <!-- CSS Específico da Página -->
+    <link rel="stylesheet" href="Sobre-nós.css">
+    
+    <title>RUANDMA PC</title>
+</head>
+<body>
+    <!-- Header -->
+    <header role="banner">
+        <nav role="navigation" aria-label="Menu principal">
+            <div class="logo" role="button" aria-label="Abrir carrinho" tabindex="0">
+                <img src="imagens/logomarca/logomarca.png" alt="RUANDMA PC">
+                <div class="cart-count" id="cart-count">0</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="Início.html" aria-label="Ir para a página inicial">Início</a></li>
+                <li><a href="Loja.html" aria-label="Visitar nossa loja">Loja</a></li>
+                <li><a href="Sobre-nós.html" aria-label="Saber mais sobre nós">Sobre nós</a></li>
+                <li><a href="Contato.html" aria-label="Entrar em contato conosco">Contato</a></li>
+            </ul>
+            <div class="profile">
+                <img src="imagens/perfil/perfil.png" alt="Foto de Perfil" class="profile-img" onerror="this.src='imagens/perfil/perfil.png'">
+            </div>
+            <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+<!-- Seção sobre a empresa -->
+<section class="sobre-nos">
+    <div class="container">
+        <p>Bem-vindo à <strong>RUANDMA PC!</strong> Somos apaixonados por tecnologia e dedicados a oferecer os melhores computadores para gamers, editores e profissionais de diversas áreas. Nosso objetivo é fornecer soluções de alta qualidade, com equipamentos robustos e com o melhor custo-benefício.</p>
+
+        <p>Fundada em 2025 por <strong>Ruan de Morais Arruda</strong>, estudante de Análise e Desenvolvimento de Sistemas na <strong>Faculdade de Tecnologia e Inovação Senac - DF</strong>, a RUANDMA PC surgiu para atender uma crescente demanda por equipamentos que proporcionam alto desempenho, seja para jogos, edição de vídeo ou aplicações profissionais.</p>
+
+        <p><strong>Nosso compromisso</strong> vai além de vender computadores. Buscamos oferecer o <strong>melhor atendimento</strong>, suporte técnico especializado e garantir que nossos produtos atendam às expectativas dos nossos clientes. Estamos sempre atualizados com as últimas tendências em hardware e buscamos fornecer soluções personalizadas para cada tipo de necessidade.</p>
+
+        <p><strong>Nossa missão</strong> é proporcionar <strong>soluções de alta performance com equipamentos de última geração, aliados a um atendimento excepcional e garantia de qualidade</strong>, oferecendo experiências imersivas para gamers e profissionais de diversas áreas.</p>
+
+        <p><strong>Buscamos ser a principal referência no mercado de computadores</strong>, reconhecida pela nossa inovação constante, excelência em produtos e pelo compromisso inabalável com nossos clientes.<strong>Estamos empenhados em transformar o potencial de nossos clientes</strong>, entregando tecnologia que impulsiona a criatividade, produtividade e diversão, sempre com qualidade e confiabilidade.</p>
+    </div>
+</section>
+    
+    <!-- Sidebar (Carrinho) -->
+    <div class="sidebar" id="cart-sidebar" aria-hidden="true">
+        <div class="sidebar-header">
+            <h3>Carrinho de Compras</h3>
+        </div>
+        <button id="close-btn" class="close-btn" aria-label="Fechar carrinho">x</button>
+        <button class="clear-cart-btn" id="clear-cart-btn" aria-label="Limpar todos os itens do carrinho">
+            Limpar Carrinho
+        </button>
+        <div id="cart-items" aria-live="polite"></div>
+        <div class="cart-total">
+            <p>Total: <span id="cart-total">R$ 0,00</span></p>
+        </div>
+        <button class="checkout-btn" aria-label="Finalizar compra">Finalizar Compra</button>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" aria-hidden="true"></div>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <ul>
+                <li>&copy; 2025 RUANDMA PC - Todos os direitos reservados.</li>
+                <li>CNPJ: 00.000.000/0001-00</li>
+                <li>Contato: <a href="mailto:contato@ruandmapc.com">contato@ruandmapc.com</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+<script src="shared.js" defer></script>
+<script src="Início.js" defer></script>
+<script src="Início.js" defer></script>
+<script src="Loja.js" defer></script>
+</body>
+</html>
