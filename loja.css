@@ -108,7 +108,7 @@
     overflow: hidden; /* Esconde o conteúdo que excede a altura */
     height: 170px; /* Altura definida para o contêiner */
     max-height: 350px; /* Garante que o contêiner não ultrapasse essa altura */
-    margin-top: 150px;
+    margin-top: 100px;
 }
 
 /* Para telas menores, como em dispositivos móveis */
