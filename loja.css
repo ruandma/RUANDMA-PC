@@ -227,7 +227,7 @@
         font-size: 8px;      /* Tamanho da fonte dos botões */
         padding: 2px 4px;   /* Padding confortável */
         width: 100%;     /* Largura mínima adequada */
-        height: 45px;         /* Altura dos botões */
+        height: 20px;         /* Altura dos botões */
     }
 }
 
