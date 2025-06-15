@@ -225,9 +225,9 @@
 @media (max-width: 480px) {
     .botoes-compra.open button {
         font-size: 8px;      /* Tamanho da fonte dos botões */
-        padding: 2px 4px;   /* Padding confortável */
+        padding: 1px 2px;   /* Padding confortável */
         width: 100%;     /* Largura mínima adequada */
-        height: 20px;         /* Altura dos botões */
+        height: 25px;         /* Altura dos botões */
     }
 }
 
