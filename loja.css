@@ -227,7 +227,7 @@
         font-size: 6px;      /* Diminui o tamanho da fonte */
         padding: 6px 10px;    /* Diminui o padding */
         min-width: 90px;      /* Largura mínima menor */
-        height: 10px;         /* Altura menor */
+        height: 25px;         /* Altura menor */
     }
 }
 
