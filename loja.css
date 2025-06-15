@@ -178,7 +178,7 @@
         max-width: 100%; /* Garante que não ultrapasse a largura do container */
         width: 100px;
         color: var(--gray-light);
-        font-size: 5px !important;
+        font-size: 6px !important;
         text-align: center;
         overflow: hidden;
         max-height: 0;
