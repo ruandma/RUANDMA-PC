@@ -224,7 +224,7 @@
 
 @media (max-width: 480px) {
     .botoes-compra.open {
-        gap: 2px; /* Diminui o espaço entre os botões */
+        gap: -2px; /* Diminui o espaço entre os botões */
     }
     .botoes-compra.open button {
         font-size: 8px;
