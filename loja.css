@@ -224,10 +224,10 @@
 
 @media (max-width: 480px) {
     .botoes-compra.open button {
-        font-size: 12px;      /* Diminui o tamanho da fonte */
+        font-size: 6px;      /* Diminui o tamanho da fonte */
         padding: 6px 10px;    /* Diminui o padding */
         min-width: 90px;      /* Largura mínima menor */
-        height: 32px;         /* Altura menor */
+        height: 25px;         /* Altura menor */
     }
 }
 
