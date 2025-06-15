@@ -178,7 +178,7 @@
         max-width: 100%; /* Garante que não ultrapasse a largura do container */
         width: 100px;
         color: var(--gray-light);
-        font-size: 2.5px !important;
+        font-size: 5px !important;
         text-align: center;
         overflow: hidden;
         max-height: 0;
@@ -220,6 +220,15 @@
     font-size: var(--font-small); /* Ajuste o tamanho da fonte conforme necessário */
     white-space: nowrap;          /* Impede que o texto quebre linha */
     text-align: center;           /* Garante o alinhamento do texto dentro do botão */
+}
+
+@media (max-width: 480px) {
+    .botoes-compra.open button {
+        font-size: 12px;      /* Diminui o tamanho da fonte */
+        padding: 6px 10px;    /* Diminui o padding */
+        min-width: 90px;      /* Largura mínima menor */
+        height: 32px;         /* Altura menor */
+    }
 }
 
 /* Para telas menores, como em dispositivos móveis */
