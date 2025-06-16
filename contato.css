@@ -1,0 +1,290 @@
+/* Container geral do formulário de contato */
+.contato {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    background: #232526;
+}
+
+/* Título principal */
+.contato h1 {
+    font-size: 36px;
+    color: #00ff99;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Parágrafo introdutório */
+.contato p {
+    font-size: 18px;
+    color: #ddd;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Layout flex para formulário e informações */
+.contato-flex {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza os blocos */
+    align-items: flex-start; /* Alinha pelo topo */
+}
+
+.contato-form, .contato-info {
+    flex: 1 1 320px;
+    background: #18191a;
+    padding: 24px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+    margin-bottom: 20px;
+}
+
+.contato-info, .informacoes {
+    flex: 0 0 auto;      /* Não cresce além do conteúdo */
+    width: auto;         /* Largura automática conforme o conteúdo */
+    max-width: 400px;    /* Limite opcional para não ficar muito largo */
+    margin: 0 auto 20px auto;
+    background: #18191a;
+    padding: 24px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+
+.contato-info, .informacoes {
+    padding: 18px 16px;
+}
+
+/* Estilo para o formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+form label {
+    font-size: 16px;
+    color: #00ff99;
+    margin-bottom: 8px;
+    font-weight: 600;
+    display: block;
+}
+
+form input, form textarea {
+    background-color: #2b2b2b;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 4px;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+/* Botão de envio */
+form button {
+    background-color: #00ff99;
+    color: #232526;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #00cc77;
+}
+
+/* Estilo para as informações de contato */
+.informacoes {
+    margin-top: 40px;
+}
+
+.informacoes h2 {
+    font-size: 28px;
+    color: #00ff99;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.informacoes ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.informacoes ul li {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.informacoes ul li a {
+    color: #00ff99;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.informacoes ul li a:hover {
+    text-decoration: underline;
+}
+
+.informacoes ul li i {
+    margin-right: 8px;
+    color: #00ff99;
+    font-size: 1.1em;
+}
+
+/* Redes sociais */
+.redes-sociais {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.redes-sociais li a {
+    color: #00ff99;
+    font-size: 1.1em;
+    transition: color 0.2s;
+}
+
+.redes-sociais li a:hover {
+    color: #fff;
+}
+
+/* Foto do contato */
+.contato-foto {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    gap: 12px;
+    justify-content: center;
+}
+.contato-foto img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid #00ff99;
+    object-fit: cover;
+}
+.contato-foto span {
+    color: #fff;
+    font-size: 1em;
+    text-align: left;
+}
+
+/* Dropdown do perfil */
+.profile-dropdown {
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    background: #232526;
+    border: 1px solid #00ff99;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    z-index: 1000;
+    min-width: 150px;
+    padding: 8px 0;
+    animation: fadeIn 0.2s;
+    display: none;
+}
+.profile-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.profile-dropdown li {
+    padding: 8px 20px;
+}
+.profile-dropdown li a {
+    color: #00ff99;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+.profile-dropdown li a.selected,
+.profile-dropdown li a:hover {
+    color: #fff;
+}
+.profile-dropdown li a.selected i,
+.profile-dropdown li a:hover i {
+    color: #fff;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* Responsividade */
+@media screen and (max-width: 900px) {
+    .contato-flex {
+        flex-direction: column;
+        gap: 0;
+    }
+    .contato-form, .contato-info {
+        margin-bottom: 24px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contato {
+        padding: 40px 10px;
+    }
+    .contato h1 {
+        font-size: 28px;
+    }
+    .contato p {
+        font-size: 16px;
+    }
+    .informacoes h2 {
+        font-size: 22px;
+    }
+    .informacoes ul li {
+        font-size: 15px;
+    }
+    form {
+        width: 100%;
+        margin: 0;
+    }
+    form label, form input, form textarea {
+        font-size: 14px;
+    }
+    form button {
+        font-size: 16px;
+        padding: 12px;
+        width: 100%;
+    }
+}
