@@ -1,0 +1,108 @@
+/* Box-shadow para o header */
+header {
+    box-shadow: 0 4px 8px rgba(0, 255, 153, 0.2); /* Box shadow verde */
+    z-index: 999; /* Garantir que o header fique acima de outros elementos */
+}
+
+/* Estilos para o corpo da página "Sobre-nos" */
+
+.sobre-nos {
+    background-color: #222; /* Cor de fundo igual às outras páginas, com tom escuro */
+    padding: 60px 20px; /* Espaçamento para tornar a leitura mais agradável */
+    font-family: 'Arial', sans-serif; /* Fonte básica e legível */
+    color: #fff; /* Cor da fonte branca para o texto */
+}
+
+.sobre-nos .container {
+    max-width: 900px; /* Largura máxima para o conteúdo, evitando que fique muito esticado */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    line-height: 1.8; /* Aumenta o espaçamento entre linhas para melhor leitura */
+}
+
+.sobre-nos p {
+    font-size: 18px; /* Tamanho de fonte adequado para leitura em dispositivos desktop */
+    color: #fff; /* Cor de texto branca para contraste */
+    margin-bottom: 20px; /* Espaçamento entre os parágrafos */
+}
+
+.sobre-nos h1 {
+    font-size: 36px; /* Título grande e chamativo */
+    color: #fff; /* Cor branca para o título */
+    margin-bottom: 30px; /* Espaçamento abaixo do título */
+    text-align: center; /* Alinha o título ao centro */
+}
+
+.sobre-nos h2 {
+    font-size: 28px; /* Tamanho de fonte para subtítulos */
+    color: #fff; /* Cor de subtítulo branca */
+    margin-top: 40px; /* Espaçamento acima dos subtítulos */
+    margin-bottom: 15px; /* Espaçamento abaixo dos subtítulos */
+}
+
+.sobre-nos h3 {
+    font-size: 22px; /* Tamanho do subtítulo menor */
+    color: #fff; /* Cor branca para o subtítulo */
+    margin-top: 30px; /* Distância do conteúdo anterior */
+    margin-bottom: 15px; /* Distância para o texto subsequente */
+}
+
+.sobre-nos .mission-vision {
+    display: flex; /* Usando flexbox para alinhar as colunas */
+    justify-content: space-between; /* Espaçamento entre as colunas */
+    gap: 20px; /* Espaço entre as colunas */
+    margin-top: 40px;
+}
+
+.sobre-nos .mission, .sobre-nos .vision {
+    background-color: #333; /* Cor de fundo escura para as seções */
+    padding: 30px; /* Preenchimento interno das seções */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar destaque */
+    border-radius: 8px; /* Bordas arredondadas */
+    flex: 1; /* As colunas ocupam o mesmo espaço */
+}
+
+.sobre-nos .mission p, .sobre-nos .vision p {
+    font-size: 18px; /* Tamanho de fonte para as descrições */
+    color: #fff; /* Cor branca para o texto da missão/visão */
+    line-height: 1.6;
+}
+
+.sobre-nos .values ul {
+    list-style-type: none; /* Remove os marcadores da lista */
+    margin-top: 20px;
+}
+
+.sobre-nos .values ul li {
+    font-size: 18px; /* Tamanho de fonte adequado */
+    color: #fff; /* Cor branca para o texto dos valores */
+    margin-bottom: 10px; /* Distância entre os itens da lista */
+    line-height: 1.6;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .sobre-nos {
+        padding: 40px 20px; /* Menos espaçamento em telas menores */
+    }
+
+    .sobre-nos .container {
+        padding: 0 15px; /* Padding reduzido para dispositivos móveis */
+    }
+
+    .sobre-nos .mission-vision {
+        flex-direction: column; /* Colunas empilhadas em dispositivos móveis */
+        gap: 30px; /* Maior espaço entre as seções */
+    }
+    
+    .sobre-nos h1 {
+        font-size: 28px; /* Título menor em dispositivos móveis */
+    }
+
+    .sobre-nos h2 {
+        font-size: 24px; /* Subtítulo menor em dispositivos móveis */
+    }
+
+    .sobre-nos h3 {
+        font-size: 20px; /* Subtítulo menor em dispositivos móveis */
+    }
+}
