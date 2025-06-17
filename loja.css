@@ -112,7 +112,10 @@
     overflow: hidden; /* Esconde o conteúdo que excede a altura */
     height: 170px; /* Altura definida para o contêiner */
     max-height: 350px; /* Garante que o contêiner não ultrapasse essa altura */
+<<<<<<< HEAD
     margin-top: 65px;
+=======
+>>>>>>> master
 }
 
 /* Para telas menores, como em dispositivos móveis */
@@ -122,7 +125,11 @@
         width: 200px;               /* Ajusta a largura para 100% da tela */
         padding: 10px;            /* Ajuste do padding para caber melhor no celular */
         height: 155px;
+<<<<<<< HEAD
         max-height: 265px; /* Garante que o contêiner não ultrapasse essa altura */
+=======
+        max-height: 320px; /* Garante que o contêiner não ultrapasse essa altura */
+>>>>>>> master
         margin-top: 0px;
     }
 }
@@ -231,7 +238,11 @@
         font-size: 8px;
         padding: 1px 2px;
         width: 100%;
+<<<<<<< HEAD
         height: 20px;    }
+=======
+        height: 25px;    }
+>>>>>>> master
 }
 
 /* Para telas menores, como em dispositivos móveis */
@@ -277,6 +288,24 @@
     opacity: 0; /* Invisível inicialmente */
 }
 
+<<<<<<< HEAD
+=======
+/* Para telas menores, como em dispositivos móveis */
+@media (max-width: 480px) {
+    .descricao-produto {
+    margin-top: 5px;
+    color: var(--gray-light);
+    font-size: 0.65rem !important;
+    text-align: center;
+    width: 100%; /* Mesma largura do .dualshock4 */
+    overflow: hidden; /* Esconde conteúdo que excede o espaço */
+    transition: max-height 0.3s ease, opacity 0.3s ease; /* Animação suave */
+    max-height: 300px; /* Altura inicial */
+    opacity: 0; /* Invisível inicialmente */
+}
+}
+
+>>>>>>> master
 .descricao-produto.open {
     display: block; /* Torna visível quando aberto */
     max-height: 100px; /* Altura suficiente para acomodar o conteúdo */
