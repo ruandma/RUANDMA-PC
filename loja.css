@@ -121,11 +121,7 @@
         width: 200px;               /* Ajusta a largura para 100% da tela */
         padding: 10px;            /* Ajuste do padding para caber melhor no celular */
         height: 155px;
-<<<<<<< HEAD
         max-height: 320px; /* Garante que o contêiner não ultrapasse essa altura */
-=======
-        max-height: 265px; /* Garante que o contêiner não ultrapasse essa altura */
->>>>>>> 32e9b4fa1d3fbecf080b6548a04ee805e2b61f63
         margin-top: 0px;
     }
 }
@@ -234,11 +230,7 @@
         font-size: 8px;
         padding: 1px 2px;
         width: 100%;
-<<<<<<< HEAD
         height: 25px;    }
-=======
-        height: 20px;    }
->>>>>>> 32e9b4fa1d3fbecf080b6548a04ee805e2b61f63
 }
 
 /* Para telas menores, como em dispositivos móveis */
@@ -284,7 +276,6 @@
     opacity: 0; /* Invisível inicialmente */
 }
 
-<<<<<<< HEAD
 /* Para telas menores, como em dispositivos móveis */
 @media (max-width: 480px) {
     .descricao-produto {
@@ -300,8 +291,6 @@
 }
 }
 
-=======
->>>>>>> 32e9b4fa1d3fbecf080b6548a04ee805e2b61f63
 .descricao-produto.open {
     display: block; /* Torna visível quando aberto */
     max-height: 100px; /* Altura suficiente para acomodar o conteúdo */
