@@ -164,7 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const categoriaBtns = document.querySelectorAll(".categoria-btn");
     const barraPesquisa = document.getElementById("pesquisa-produto");
 
-    // Estado para saber se o acessório está ativo
     let acessorioAtivo = false;
 
     // Botão de descrição
@@ -211,7 +210,6 @@ document.addEventListener("DOMContentLoaded", function () {
         barraPesquisa.addEventListener("input", function () {
             const termo = barraPesquisa.value.trim().toLowerCase();
             if (termo.length === 0) {
-                // Se o acessório está ativo, mantém visível
                 dualshock4.style.display = acessorioAtivo ? "block" : "none";
             } else if ("dualshock 4".toLowerCase().includes(termo)) {
                 dualshock4.style.display = "block";
@@ -219,5 +217,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 dualshock4.style.display = "none";
             }
         });
+
+        // Desativa a função do botão da lupa
+        const form = barraPesquisa.closest("form");
+        if (form) {
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+            });
+        }
     }
 });

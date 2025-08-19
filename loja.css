@@ -20,6 +20,20 @@
     width: 100%;
 }
 
+.barra-pesquisa button[type="submit"] {
+    pointer-events: none;      /* Não permite clique */
+    outline: none !important;  /* Remove borda azul de foco */
+    box-shadow: none !important;
+    background: transparent;
+    border: none;
+    color: #007bff;
+    cursor: default;           /* Cursor padrão */
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .barra-pesquisa > div {
     width: 350px;
     position: relative;
