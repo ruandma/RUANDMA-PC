@@ -32,42 +32,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="contato.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/contato.css">
     <meta name="theme-color" content="#ffffff"> 
     <title>RUANDMA PC</title>
 </head>
 <body>
-    <!-- Header -->
+        <?php session_start(); ?>
+
+<!-- Header -->
 <header role="banner">
     <nav role="navigation" aria-label="Menu principal">
+        <!-- Logo e Carrinho -->
         <div class="logo" role="button" aria-label="Abrir carrinho" tabindex="0">
             <img src="imagens/logomarca/logomarca.png" alt="RUANDMA PC">
             <div class="cart-count" id="cart-count">0</div>
         </div>
+
+        <!-- Menu de navegação principal -->
         <ul class="nav-links">
-            <li><a href="index.html" aria-current="page" aria-label="Ir para a página inicial">Início</a></li>
-            <li><a href="loja.html" aria-label="Visitar nossa loja">Loja</a></li>
-            <li><a href="sobre-nos.html" aria-label="Saber mais sobre nós">Sobre nós</a></li>
-            <li><a href="contato.html" aria-label="Entrar em contato conosco">Contato</a></li>
+            <li><a href="/RUANDMA-PC/index.php" aria-current="page" aria-label="Ir para a página inicial">Início</a></li>
+            <li><a href="/RUANDMA-PC/php/loja.php" aria-label="Visitar nossa loja">Loja</a></li>
+            <li><a href="/RUANDMA-PC/php/sobre-nos.php" aria-label="Saber mais sobre nós">Sobre nós</a></li>
+            <li><a href="/RUANDMA-PC/php/contato.php" aria-label="Entrar em contato conosco">Contato</a></li>
         </ul>
+
+        <!-- Perfil do usuário -->
         <div class="profile" style="position: relative;">
-            <img src="imagens/perfil/perfil.png" alt="Foto de Perfil" class="profile-img" onerror="this.src='imagens/perfil/perfil.png'">
-            <!-- Balão de opções de conta -->
+            <img src="imagens/perfil/perfil.png" alt="Foto de Perfil" class="profile-img" onerror="this.src='imagens/perfil/perfil.png'" tabindex="0">
+
+            <!-- Dropdown do perfil -->
             <div class="profile-dropdown" id="profile-dropdown" style="display: none;">
                 <ul>
-                    <li><a href="#" class="profile-action" id="btn-registrar"><i class="fas fa-user-plus"></i> Registrar</a></li>
-                    <li><a href="#" class="profile-action" id="btn-logar"><i class="fas fa-sign-in-alt"></i> Logar</a></li>
+                    <?php if (isset($_SESSION['usuario_id'])): ?>
+                        <li><a href="/RUANDMA-PC/php/minha-conta.php" class="profile-action"><i class="fas fa-user"></i> Minha Conta</a></li>
+                        <li><a href="/RUANDMA-PC/php/historico.php" class="profile-action"><i class="fas fa-history"></i> Histórico</a></li>
+                        <li><a href="/RUANDMA-PC/php/logout.php" class="profile-action"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                    <?php else: ?>
+                        <li><a href="/RUANDMA-PC/php/registrar.php" class="profile-action"><i class="fas fa-user-plus"></i> Registrar</a></li>
+                        <li><a href="/RUANDMA-PC/php/entrar.php" class="profile-action"><i class="fas fa-sign-in-alt"></i> Entrar</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
-        <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+
+        <!-- Botão Hamburger para mobile -->
+        <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" tabindex="0">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </div>
     </nav>
 </header>
+
 
 <!-- Main Content -->
 <main>
@@ -147,39 +164,57 @@
     </section>
 </main>
 
-    <!-- Sidebar (Carrinho) -->
-    <div class="sidebar" id="cart-sidebar" aria-hidden="true">
-        <div class="sidebar-header">
-            <h3>Carrinho de Compras</h3>
-        </div>
-        <button id="close-btn" class="close-btn" aria-label="Fechar carrinho">x</button>
-        <button class="clear-cart-btn" id="clear-cart-btn" aria-label="Limpar todos os itens do carrinho">
+<!-- Sidebar (Carrinho) -->
+<div class="sidebar" id="cart-sidebar" aria-hidden="true">
+    <!-- Cabeçalho -->
+    <div class="sidebar-header">
+        <h3>Carrinho de Compras</h3>
+        <button id="close-btn" class="close-btn" aria-label="Fechar carrinho">✖</button>
+    </div>
+
+    <!-- Ações do Carrinho -->
+    <div class="cart-actions">
+        <button class="cart-btn clear-cart-btn" id="clear-cart-btn" aria-label="Limpar todos os itens do carrinho">
             Limpar Carrinho
         </button>
-        <div id="cart-items" aria-live="polite"></div>
-        <div class="cart-total">
-            <p>Total: <span id="cart-total">R$ 0,00</span></p>
-        </div>
-        <button class="checkout-btn" aria-label="Finalizar compra">Finalizar Compra</button>
     </div>
+
+    <!-- Itens do Carrinho -->
+    <div id="cart-items" class="cart-items" aria-live="polite"></div>
+
+    <!-- Total -->
+    <div class="cart-total">
+        <p>Total: <span id="cart-total">R$ 0,00</span></p>
+    </div>
+
+    <!-- Finalizar Compra -->
+    <div class="cart-actions">
+        <button class="cart-btn checkout-btn" aria-label="Finalizar compra">
+            Finalizar Compra
+        </button>
+    </div>
+</div>
 
     <!-- Overlay -->
     <div class="overlay" id="overlay" aria-hidden="true"></div>
 
     <!-- Footer -->
-    <footer role="contentinfo">
-        <div class="footer-content">
-            <ul>
-                <li>&copy; 2025 RUANDMA PC - Todos os direitos reservados.</li>
-                <li>CNPJ: 00.000.000/0001-00</li>
-                <li>Contato: <a href="mailto:contato@ruandmapc.com">contato@ruandmapc.com</a></li>
-                <li><a href="/privacidade">Política de Privacidade</a> | <a href="/termos">Termos de Uso</a></li>
-            </ul>
-        </div>
-    </footer>
+<footer role="contentinfo">
+    <div class="footer-content">
+        <ul>
+            <li>&copy; 2025 RUANDMA PC - Todos os direitos reservados.</li>
+            <li>CNPJ: 00.000.000/0001-00</li>
+            <li>Contato: <a href="mailto:ruan.morais.arruda@gmail.com">ruan.morais.arruda@gmail.com</a></li>
+            <li>
+                <a href="politica-de-privacidade.pdf" download="Politica_de_Privacidade_RUANDMA_PC.pdf" class="footer-link">Política de Privacidade</a> |
+                <a href="termos-de-uso.pdf" download="Termos_de_Uso_RUANDMA_PC.pdf" class="footer-link">Termos de Uso</a>
+            </li>
+        </ul>
+    </div>
+</footer>
 
     <!-- Scripts -->
-    <script src="index.js" defer></script>
-    <script src="shared.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/shared.js" defer></script>
 </body>
 </html>

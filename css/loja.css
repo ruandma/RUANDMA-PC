@@ -365,21 +365,145 @@
     opacity: 1; /* Visível */
 }
 
-/* Botões de Compra */
+/* ================= BOTÕES DE COMPRA PADRÃO (DESKTOP IGUAL AO MOBILE) ================= */
 .botoes-compra {
-    display: none; /* Inicialmente oculto */
+    display: flex;
     flex-direction: column;
-    gap: var(--spacing-small);
-    margin-top: var(--spacing-small);
-    width: 100%; /* Mesma largura do .dualshock4 */
-    overflow: hidden; /* Esconde conteúdo que excede o espaço */
-    transition: max-height 0.3s ease, opacity 0.3s ease; /* Animação suave */
-    max-height: 0; /* Altura inicial */
-    opacity: 0; /* Invisível inicialmente */
+    justify-content: center;
+    align-items: center;       /* Centraliza horizontalmente */
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 200px;          /* Ajuste para largura do produto */
+    text-align: center;
 }
 
-.descricao-produto.open + .botoes-compra {
-    display: flex; /* Exibe os botões quando a descrição estiver aberta */
-    max-height: 100px; /* Altura suficiente para acomodar o conteúdo */
-    opacity: 1; /* Visível */
+.botoes-compra button {
+    width: 100%;
+    padding: 6px 0;           /* reduz a altura do botão */
+    font-size: 10px;           /* mantém fonte pequena */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    display: block;
+    text-align: center;
+    margin-bottom: 3px;        /* reduz espaçamento entre botões */
+    box-sizing: border-box;
+    transition: background 0.3s ease;
+    line-height: normal;
+}
+
+/* Cores específicas dos botões */
+.botoes-compra button.add-to-cart {
+    background-color: #6f42c1;  
+}
+
+.botoes-compra button.add-to-cart:hover {
+    background-color: #5931a2;  
+}
+
+.botoes-compra button.buy-now {
+    background-color: #28a745;  
+}
+
+.botoes-compra button.buy-now:hover {
+    background-color: #218838;  
+}
+
+/* ======= BOTÕES DE COMPRA PADRONIZADOS NO MOBILE ======= */
+@media (max-width: 480px) {
+    .botoes-compra button {
+        width: 100%;
+        padding: 12px 0;         /* centraliza verticalmente */
+        font-size: 16px;          /* tamanho legível no mobile */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        display: block;
+        text-align: center;
+        margin-bottom: 5px;
+        box-sizing: border-box;
+        transition: background 0.3s ease;
+
+        /* Para garantir alinhamento vertical */
+        line-height: normal;     
+    }
+
+    .botoes-compra button.add-to-cart {
+        background-color: #6f42c1;  
+    }
+
+    .botoes-compra button.add-to-cart:hover {
+        background-color: #5931a2;  
+    }
+
+    .botoes-compra button.buy-now {
+        background-color: #28a745;  
+    }
+
+    .botoes-compra button.buy-now:hover {
+        background-color: #218838;  
+    }
+}
+
+/* Estilo do pop-up do produto */
+.produto-popup {
+    display: none; /* inicia oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* fundo semi-transparente */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Conteúdo da imagem ampliada */
+.produto-popup .popup-content {
+    position: relative;
+    background: transparent; /* sem fundo branco */
+    border: none;
+    box-shadow: none;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+/* Imagem ampliada padrão */
+.produto-popup .popup-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+    object-fit: contain;
+}
+
+/* Botão de fechar */
+.produto-popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* Ajuste para telas grandes (desktop) */
+@media (min-width: 1024px) {
+    .produto-popup .popup-content {
+        max-width: 500px; /* reduz a largura máxima no desktop */
+        max-height: 100%;  /* reduz a altura máxima no desktop */
+    }
+
+    .produto-popup .popup-content img {
+        width: 100%;  /* mantém proporcional */
+        height: auto;
+    }
 }

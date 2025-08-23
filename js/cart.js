@@ -1,5 +1,9 @@
+// ===============================
+// CART.JS - Script unificado
+// ===============================
+
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("Script carregado!");
+    console.log("cart.js carregado!");
 
     /*** 🛒 CONFIGURAÇÃO DO CARRINHO DE COMPRAS ***/
     const sidebar = document.getElementById("cart-sidebar");
@@ -12,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const logo = document.querySelector(".logo");
 
     function toggleSidebar() {
+        if (!sidebar || !overlay) return;
         sidebar.classList.toggle("open-sidebar");
         overlay.classList.toggle("visible");
         document.body.style.overflow = sidebar.classList.contains("open-sidebar") ? "hidden" : "auto";
@@ -32,10 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
+        // Atualiza UI do carrinho
         function updateCartUI() {
             cartItemsContainer.innerHTML = "";
             let total = 0;
-    
+
             cartItems.forEach((item, index) => {
                 const cartItemElement = document.createElement("div");
                 cartItemElement.classList.add("cart-item");
@@ -56,10 +62,12 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             cartTotal.textContent = `R$ ${total.toFixed(2)}`;
-            cartCount.textContent = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            if (cartCount) cartCount.textContent = cartItems.reduce((sum, item) => sum + item.quantity, 0);
             clearCartBtn.style.display = cartItems.length > 0 ? "block" : "none";
+
             localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
+            // Adiciona eventos aos botões de quantidade
             document.querySelectorAll(".increase-qty").forEach(button => {
                 button.addEventListener("click", function (event) {
                     event.stopPropagation();
@@ -68,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     updateCartUI();
                 });
             });
-
             document.querySelectorAll(".decrease-qty").forEach(button => {
                 button.addEventListener("click", function (event) {
                     event.stopPropagation();
@@ -93,17 +100,19 @@ document.addEventListener("DOMContentLoaded", function () {
             updateCartUI();
         }
 
+        // Botões "Adicionar ao carrinho"
         document.querySelectorAll(".add-to-cart").forEach(button => {
             button.addEventListener("click", function () {
-                const product = {
-                    id: this.dataset.productId,
-                    name: this.dataset.productName,
-                    price: parseFloat(this.dataset.productPrice),
-                    image: this.dataset.productImage
-                };
+            const product = {
+            id: this.dataset.productId,
+            name: this.dataset.productName,
+            price: parseFloat(this.dataset.productPrice),
+            image: this.dataset.productImage // pega dinamicamente do botão
+        };
+        addToCart(product);
 
-                addToCart(product);
 
+                // Animação do ícone voando para o carrinho
                 const cartIcon = document.querySelector(".logo img");
                 const buttonRect = this.getBoundingClientRect();
                 const cartRect = cartIcon.getBoundingClientRect();
@@ -122,26 +131,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 const deltaX = cartRect.left - buttonRect.left;
                 const deltaY = cartRect.top - buttonRect.top;
 
-                flyIcon.animate(
-                    [
-                        { transform: `translate(0px, 0px) scale(1)`, opacity: 1 },
-                        { transform: `translate(${deltaX}px, ${deltaY}px) scale(0.5)`, opacity: 0 }
-                    ],
-                    {
-                        duration: 1000,
-                        easing: "ease-in-out",
-                        fill: "forwards"
-                    }
-                );
-
-                window.scrollTo({
-                    top: cartRect.top - 50,
-                    behavior: "smooth"
+                flyIcon.animate([
+                    { transform: `translate(0px, 0px) scale(1)`, opacity: 1 },
+                    { transform: `translate(${deltaX}px, ${deltaY}px) scale(0.5)`, opacity: 0 }
+                ], {
+                    duration: 1000,
+                    easing: "ease-in-out",
+                    fill: "forwards"
                 });
 
-                setTimeout(() => {
-                    flyIcon.remove();
-                }, 1000);
+                setTimeout(() => flyIcon.remove(), 1000);
             });
         });
 
@@ -155,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Erro: Elementos do carrinho não encontrados no DOM.");
     }
 
-    /*** 🔽 EXPANDIR/RETRAIR DESCRIÇÃO ***/
+    /*** 🎮 CONFIGURAÇÃO DOS PRODUTOS (descrição, categorias, pesquisa) ***/
     const descricaoBtn = document.querySelector(".descricao-btn");
     const dualshock4 = document.querySelector(".dualshock4");
     const descricaoProduto = document.querySelector(".descricao-produto");
@@ -166,7 +165,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let acessorioAtivo = false;
 
-    // Botão de descrição
     if (descricaoBtn && dualshock4 && descricaoProduto && botoesCompra) {
         descricaoBtn.addEventListener("click", function () {
             descricaoProduto.classList.toggle("open");
@@ -183,7 +181,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Clique no botão acessório
     if (acessorioBtn && dualshock4) {
         acessorioBtn.addEventListener("click", function () {
             if (barraPesquisa.value.trim() === "") {
@@ -193,9 +190,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Clique nas outras categorias
     if (categoriaBtns && dualshock4) {
-        categoriaBtns.forEach(function (btn) {
+        categoriaBtns.forEach(btn => {
             btn.addEventListener("click", function () {
                 if (btn.id !== "acessorio-btn" && barraPesquisa.value.trim() === "") {
                     dualshock4.style.display = "none";
@@ -205,7 +201,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Pesquisa em tempo real
     if (barraPesquisa && dualshock4) {
         barraPesquisa.addEventListener("input", function () {
             const termo = barraPesquisa.value.trim().toLowerCase();
@@ -218,7 +213,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // Desativa a função do botão da lupa
         const form = barraPesquisa.closest("form");
         if (form) {
             form.addEventListener("submit", function (e) {
@@ -226,4 +220,5 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     }
+
 });

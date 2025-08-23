@@ -10,7 +10,7 @@
     justify-content: center;
     width: 100%;
     box-sizing: border-box;
-    background: #232526;
+    background-color: #0b0f14;
 }
 
 /* Título principal */
@@ -138,7 +138,7 @@ form button:hover {
 }
 
 .informacoes ul li {
-    font-size: 18px;
+    font-size: 15px;
     color: #ccc;
     margin-bottom: 15px;
     display: flex;
